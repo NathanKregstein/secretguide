@@ -13,6 +13,7 @@
 		D85DF1392395A4AE003A8EC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85DF1382395A4AE003A8EC4 /* ViewController.swift */; };
 		D85DF13E2395A4B0003A8EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D85DF13D2395A4B0003A8EC4 /* Assets.xcassets */; };
 		D85DF1412395A4B0003A8EC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85DF13F2395A4B0003A8EC4 /* LaunchScreen.storyboard */; };
+		D870BAE023D1213800C683C1 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = D870BADF23D1213800C683C1 /* mapstyle.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D85DF13D2395A4B0003A8EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D85DF1402395A4B0003A8EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D85DF1422395A4B0003A8EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D870BADF23D1213800C683C1 /* mapstyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapstyle.json; sourceTree = "<group>"; };
 		DD3B0D50F5FD427E9E2C9B02 /* Pods-maptest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maptest.debug.xcconfig"; path = "Target Support Files/Pods-maptest/Pods-maptest.debug.xcconfig"; sourceTree = "<group>"; };
 		FFF517C634ADC8958B9BA176 /* Pods_maptest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maptest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 			children = (
 				D85DF1362395A4AE003A8EC4 /* AppDelegate.swift */,
 				D85DF1382395A4AE003A8EC4 /* ViewController.swift */,
+				D870BADF23D1213800C683C1 /* mapstyle.json */,
 				D85DF13A2395A4AE003A8EC4 /* Main.storyboard */,
 				D85DF13D2395A4B0003A8EC4 /* Assets.xcassets */,
 				D85DF13F2395A4B0003A8EC4 /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D870BAE023D1213800C683C1 /* mapstyle.json in Resources */,
 				D841363D23972583003E83B1 /* Main.storyboard in Resources */,
 				D85DF1412395A4B0003A8EC4 /* LaunchScreen.storyboard in Resources */,
 				D85DF13E2395A4B0003A8EC4 /* Assets.xcassets in Resources */,
