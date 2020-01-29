@@ -91,7 +91,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func unwindSegue(_ segue:UIStoryboardSegue){
+        
+    }
+    
         // Creates a marker in the center of the map.
     func showMarker(position: CLLocationCoordinate2D){
 //            let marker = GMSMarker()
@@ -281,19 +284,20 @@ class ViewController: UIViewController {
 //            currentLocMarker.map = myMapView
 //
         }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         print("Location: \(location)")
         
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: 17.0)
+//        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+//                                              longitude: location.coordinate.longitude,
+//                                              zoom: 15.0)
         
 //        if mapView.isHidden {
 //            mapView.isHidden = false
 //            mapView.camera = camera
 //        } else {
-            myMapView.animate(to: camera)
+//            myMapView.animate(to: camera)
       
         currentLocMarker.position = location.coordinate
     
