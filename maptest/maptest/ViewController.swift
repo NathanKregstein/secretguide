@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     var partnerPoint = UIImage(named: "exNewC4")
 
     @IBOutlet weak var hintToolbar: UIToolbar!
+        let myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
+    
     let currentLocMarker = GMSMarker()
    let marker = GMSMarker()
     let marker2 = GMSMarker()
@@ -55,7 +57,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
+      
         myMapView.camera = myCamera
         
             // Set the map style by passing a valid JSON string.

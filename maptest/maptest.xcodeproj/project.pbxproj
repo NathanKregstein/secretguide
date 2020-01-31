@@ -16,6 +16,8 @@
 		D85DF13E2395A4B0003A8EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D85DF13D2395A4B0003A8EC4 /* Assets.xcassets */; };
 		D85DF1412395A4B0003A8EC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85DF13F2395A4B0003A8EC4 /* LaunchScreen.storyboard */; };
 		D870BAE023D1213800C683C1 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = D870BADF23D1213800C683C1 /* mapstyle.json */; };
+		D895FB1423E3C0F1005FA6A3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */; };
+		D895FB1623E3C92B005FA6A3 /* EmojiKeyboardClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D895FB1523E3C92B005FA6A3 /* EmojiKeyboardClass.swift */; };
 		D8C57F3623E1072A00BB7B7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8C57F3523E1072A00BB7B7D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		D85DF1402395A4B0003A8EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D85DF1422395A4B0003A8EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D870BADF23D1213800C683C1 /* mapstyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapstyle.json; sourceTree = "<group>"; };
+		D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		D895FB1523E3C92B005FA6A3 /* EmojiKeyboardClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardClass.swift; sourceTree = "<group>"; };
 		D8C57F3523E1072A00BB7B7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD3B0D50F5FD427E9E2C9B02 /* Pods-maptest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maptest.debug.xcconfig"; path = "Target Support Files/Pods-maptest/Pods-maptest.debug.xcconfig"; sourceTree = "<group>"; };
 		FFF517C634ADC8958B9BA176 /* Pods_maptest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maptest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +94,10 @@
 				D85DF1382395A4AE003A8EC4 /* ViewController.swift */,
 				D870BADF23D1213800C683C1 /* mapstyle.json */,
 				D85DF13A2395A4AE003A8EC4 /* Main.storyboard */,
+				D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */,
 				D84DB8A723E0F9B8007F6349 /* RecievedHintsViewController.swift */,
 				D84DB8A523E0F1B7007F6349 /* SendingHintsViewController.swift */,
+				D895FB1523E3C92B005FA6A3 /* EmojiKeyboardClass.swift */,
 				D85DF13D2395A4B0003A8EC4 /* Assets.xcassets */,
 				D85DF13F2395A4B0003A8EC4 /* LaunchScreen.storyboard */,
 				D85DF1422395A4B0003A8EC4 /* Info.plist */,
@@ -112,6 +118,7 @@
 				D85DF1302395A4AE003A8EC4 /* Frameworks */,
 				D85DF1312395A4AE003A8EC4 /* Resources */,
 				3D829E39243CCFF8F3F666D4 /* [CP] Copy Pods Resources */,
+				B3BEA79469A2E4617E27FFCA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,6 +217,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B3BEA79469A2E4617E27FFCA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-maptest/Pods-maptest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-maptest/Pods-maptest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-maptest/Pods-maptest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -219,7 +243,9 @@
 			files = (
 				D84DB8A823E0F9B8007F6349 /* RecievedHintsViewController.swift in Sources */,
 				D85DF1392395A4AE003A8EC4 /* ViewController.swift in Sources */,
+				D895FB1423E3C0F1005FA6A3 /* TutorialViewController.swift in Sources */,
 				D85DF1372395A4AE003A8EC4 /* AppDelegate.swift in Sources */,
+				D895FB1623E3C92B005FA6A3 /* EmojiKeyboardClass.swift in Sources */,
 				D84DB8A623E0F1B7007F6349 /* SendingHintsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
