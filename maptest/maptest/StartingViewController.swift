@@ -1,25 +1,26 @@
 //
-//  SendingHintsViewController.swift
+//  StartingViewController.swift
 //  maptest
 //
-//  Created by Nathan Kregstein on 1/28/20.
+//  Created by Nathan Kregstein on 2/2/20.
 //  Copyright © 2020 Nathan Kregstein. All rights reserved.
 //
 
 import UIKit
 
-class SendingHintsViewController: UIViewController,UITextFieldDelegate {
-    var hintToSend = ""
-    
-    @IBOutlet weak var sentHintsText: UILabel!
-    @IBOutlet weak var hintTextField: UITextField!
+class StartingViewController: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet weak var RoomNumberTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        hintTextField.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
+        // Do any additional setup after loading the view.
+       
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        RoomNumberTextField.delegate = self
+        
         let tap: UITapGestureRecognizer =
             UITapGestureRecognizer(target: self, action:
                 #selector(self.dismissKeyboard))
@@ -54,24 +55,12 @@ class SendingHintsViewController: UIViewController,UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        hintToSend = hintTextField.text!
-        print(hintToSend)
+
     }
+    
+
+    
+
 
 
 }
-
-//class EmojiTextField: UITextField {
-//
-//    // required for iOS 13
-//    override var textInputContextIdentifier: String {""} // return non-nil to show the Emoji keyboard ¯\_(ツ)_/¯
-//
-//    override var textInputMode: UITextInputMode? {
-//        for mode in UITextInputMode.activeInputModes {
-//            if mode.primaryLanguage == "emoji" {
-//                return mode
-//            }
-//        }
-//        return nil
-//    }
-//}

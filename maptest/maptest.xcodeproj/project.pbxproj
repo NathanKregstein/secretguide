@@ -15,6 +15,8 @@
 		D85DF1392395A4AE003A8EC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85DF1382395A4AE003A8EC4 /* ViewController.swift */; };
 		D85DF13E2395A4B0003A8EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D85DF13D2395A4B0003A8EC4 /* Assets.xcassets */; };
 		D85DF1412395A4B0003A8EC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85DF13F2395A4B0003A8EC4 /* LaunchScreen.storyboard */; };
+		D86DFDB323E7520F00E841AD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86DFDB223E7520F00E841AD /* LoadingViewController.swift */; };
+		D86DFDB523E7521F00E841AD /* StartingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86DFDB423E7521F00E841AD /* StartingViewController.swift */; };
 		D870BAE023D1213800C683C1 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = D870BADF23D1213800C683C1 /* mapstyle.json */; };
 		D895FB1423E3C0F1005FA6A3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */; };
 		D895FB1623E3C92B005FA6A3 /* EmojiKeyboardClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D895FB1523E3C92B005FA6A3 /* EmojiKeyboardClass.swift */; };
@@ -32,6 +34,8 @@
 		D85DF13D2395A4B0003A8EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D85DF1402395A4B0003A8EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D85DF1422395A4B0003A8EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D86DFDB223E7520F00E841AD /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		D86DFDB423E7521F00E841AD /* StartingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewController.swift; sourceTree = "<group>"; };
 		D870BADF23D1213800C683C1 /* mapstyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapstyle.json; sourceTree = "<group>"; };
 		D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		D895FB1523E3C92B005FA6A3 /* EmojiKeyboardClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardClass.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				D85DF1382395A4AE003A8EC4 /* ViewController.swift */,
 				D870BADF23D1213800C683C1 /* mapstyle.json */,
 				D85DF13A2395A4AE003A8EC4 /* Main.storyboard */,
+				D86DFDB223E7520F00E841AD /* LoadingViewController.swift */,
+				D86DFDB423E7521F00E841AD /* StartingViewController.swift */,
 				D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */,
 				D84DB8A723E0F9B8007F6349 /* RecievedHintsViewController.swift */,
 				D84DB8A523E0F1B7007F6349 /* SendingHintsViewController.swift */,
@@ -241,7 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86DFDB323E7520F00E841AD /* LoadingViewController.swift in Sources */,
 				D84DB8A823E0F9B8007F6349 /* RecievedHintsViewController.swift in Sources */,
+				D86DFDB523E7521F00E841AD /* StartingViewController.swift in Sources */,
 				D85DF1392395A4AE003A8EC4 /* ViewController.swift in Sources */,
 				D895FB1423E3C0F1005FA6A3 /* TutorialViewController.swift in Sources */,
 				D85DF1372395A4AE003A8EC4 /* AppDelegate.swift in Sources */,
