@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import GoogleMaps
 
 class TutorialViewController: UIViewController {
 
@@ -26,5 +27,11 @@ class TutorialViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if(self.restorationIdentifier ==  "lastPageTutorial"){
+//            let destVC : ViewController = segue.destination as! ViewController
+//            destVC.myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
+//        }
+//    }
 
 }

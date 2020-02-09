@@ -58,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p12-6B-mT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2855" y="-510"/>
+            <point key="canvasLocation" x="-3004" y="707"/>
         </scene>
         <!--Starting View Controller-->
         <scene sceneID="5nX-ux-nla">
@@ -74,10 +74,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Create a Room"/>
                                 <connections>
-                                    <segue destination="YBd-7B-Dgk" kind="presentation" identifier="CreatedRoom" modalTransitionStyle="crossDissolve" id="XET-zt-8Pr"/>
+                                    <action selector="CreateRoomButtonAction:" destination="Mqj-vw-Zk0" eventType="touchUpInside" id="MAQ-vY-RsC"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter room #" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-Ye-efH">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Join Room (Enter Room #)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-Ye-efH">
                                 <rect key="frame" x="16" y="264" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -107,11 +107,12 @@
                     </view>
                     <connections>
                         <outlet property="RoomNumberTextField" destination="FWq-Ye-efH" id="1JP-b5-dPE"/>
+                        <segue destination="YBd-7B-Dgk" kind="presentation" identifier="CreatedRoomSegue" id="Pch-TW-KkE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMz-Cm-x1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3666" y="9"/>
+            <point key="canvasLocation" x="-3961" y="9"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="Gyc-l3-Enp">
@@ -156,12 +157,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWD-9g-CGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1969" y="9"/>
+            <point key="canvasLocation" x="-2036" y="9"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="5Sr-la-SgF">
             <objects>
-                <viewController id="f2S-VM-bTA" customClass="TutorialViewController" customModule="maptest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="lastPageTutorial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f2S-VM-bTA" customClass="TutorialViewController" customModule="maptest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aY5-pk-Rdf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,7 +212,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qff-ub-Kba" customClass="GMSMapView">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qff-ub-Kba" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -395,6 +396,6 @@
         <image name="quNewC5" width="22" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MhT-7v-PH4"/>
+        <segue reference="aHZ-KQ-UPz"/>
     </inferredMetricsTieBreakers>
 </document>

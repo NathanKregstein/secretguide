@@ -8,6 +8,9 @@
 
 import UIKit
 import GoogleMaps
+//import FirebaseCore
+//import FirebaseFirestore
+//import FirebaseFirestoreSwift
 //import GooglePlaces
 
 class ViewController: UIViewController {
@@ -20,10 +23,10 @@ class ViewController: UIViewController {
     var partnerPoint = UIImage(named: "exNewC4")
 
     @IBOutlet weak var hintToolbar: UIToolbar!
-        let myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
+    let myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
     
     let currentLocMarker = GMSMarker()
-   let marker = GMSMarker()
+    let marker = GMSMarker()
     let marker2 = GMSMarker()
     let marker3 = GMSMarker()
     let marker4 = GMSMarker()
@@ -59,6 +62,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
       
         myMapView.camera = myCamera
+        print("camera assigned")
         
             // Set the map style by passing a valid JSON string.
             do {

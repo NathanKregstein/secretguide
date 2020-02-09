@@ -11,7 +11,7 @@ import UIKit
 class LoadingViewController: UIViewController {
 
     @IBOutlet weak var RoomNumberLabel: UILabel!
-    var roomNumber = Int.random(in: 1..<100 )
+    var roomNumber = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
