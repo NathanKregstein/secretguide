@@ -14,6 +14,7 @@ import GoogleMaps
 //import GooglePlaces
 
 class ViewController: UIViewController {
+    var roomNumber = 0
     @IBOutlet weak var myMapView: GMSMapView!
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -60,7 +61,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        myMapView.delegate = self
+        myMapView.isMyLocationEnabled = true
         myMapView.camera = myCamera
         print("camera assigned")
         

@@ -11,7 +11,7 @@ import UIKit
 class EmojiKeyboard: UIButton, UIKeyInput {
     
     var hasText: Bool = true
-    
+    override var textInputContextIdentifier: String? { return "" }
     func insertText(_ text: String) { print("\(text)") }
     
     func deleteBackward() {}
@@ -22,6 +22,7 @@ class EmojiKeyboard: UIButton, UIKeyInput {
     override var canResignFirstResponder: Bool { return true }
     
 //    var returnKeyType: UIReturnKeyType = UIReturnKeyType(rawValue: 7)!
+    
     
     override var textInputMode: UITextInputMode? {
         for mode in UITextInputMode.activeInputModes {
