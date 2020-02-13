@@ -20,6 +20,7 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
     var ref: DocumentReference? = nil
     var roomNumber = -1
     var created = false
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var RoomNumberTextField: UITextField!
     
     
@@ -39,6 +40,7 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
                     print(self.roomNumber)
 //                    document.setValue(true, forKey: "player1In")
                     docID = document.documentID
+                    self.appDelegate.roomNumber = Int(docID) ?? 0
                     print(document.data())
                     break
                     
@@ -80,7 +82,6 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
         
 
         // Do any additional setup after loading the view.
-       
         RoomNumberTextField.delegate = self
         
         let tap: UITapGestureRecognizer =
@@ -145,9 +146,10 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
         print("joinroomfunction")
         roomNumber = Int(RoomNumberTextField.text ?? "-1" ) ?? 0
 //        let semaphore = DispatchSemaphore(value: 1)
+        self.appDelegate.roomNumber = Int(roomNumber) ?? 0
         if (roomNumber >= 1){
             print("entered if")
-        var player1 = false
+            var player1 = false
             var player2 = false
            var currentRoom = db.collection("rooms").document("room"+String(roomNumber))
             print(currentRoom.documentID)
@@ -171,6 +173,7 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
                     }
                     else if(player1 && !player2){
                         //join room
+                        self.appDelegate.player1 = false
                         currentRoom.updateData( ["player2In": true
                         ]) { err in
                             if let err = err {

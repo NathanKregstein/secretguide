@@ -17,14 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    var db: Firestore!
+    var roomNumber = 0
+    var player1 = true
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyC4homFwOhpH_MAEtCVq7OLkEyjdOKsWwc")
         
         FirebaseApp.configure()
         
-        let db = Firestore.firestore()
+        db = Firestore.firestore()
         print(db)
         return true
     }
@@ -37,6 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player2In": false
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").delete()
+        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").delete()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -49,6 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player2In": false
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
 
 

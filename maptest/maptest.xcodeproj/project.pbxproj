@@ -21,6 +21,7 @@
 		D895FB1423E3C0F1005FA6A3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */; };
 		D895FB1623E3C92B005FA6A3 /* EmojiKeyboardClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D895FB1523E3C92B005FA6A3 /* EmojiKeyboardClass.swift */; };
 		D8C57F3623E1072A00BB7B7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8C57F3523E1072A00BB7B7D /* GoogleService-Info.plist */; };
+		D8FE8D7723F36A8E00519D52 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE8D7623F36A8E00519D52 /* Goal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		D895FB1323E3C0F1005FA6A3 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		D895FB1523E3C92B005FA6A3 /* EmojiKeyboardClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardClass.swift; sourceTree = "<group>"; };
 		D8C57F3523E1072A00BB7B7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D8FE8D7623F36A8E00519D52 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		DD3B0D50F5FD427E9E2C9B02 /* Pods-maptest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maptest.debug.xcconfig"; path = "Target Support Files/Pods-maptest/Pods-maptest.debug.xcconfig"; sourceTree = "<group>"; };
 		FFF517C634ADC8958B9BA176 /* Pods_maptest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maptest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 				D85DF13F2395A4B0003A8EC4 /* LaunchScreen.storyboard */,
 				D85DF1422395A4B0003A8EC4 /* Info.plist */,
 				D8C57F3523E1072A00BB7B7D /* GoogleService-Info.plist */,
+				D8FE8D7623F36A8E00519D52 /* Goal.swift */,
 			);
 			path = maptest;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				D895FB1423E3C0F1005FA6A3 /* TutorialViewController.swift in Sources */,
 				D85DF1372395A4AE003A8EC4 /* AppDelegate.swift in Sources */,
 				D895FB1623E3C92B005FA6A3 /* EmojiKeyboardClass.swift in Sources */,
+				D8FE8D7723F36A8E00519D52 /* Goal.swift in Sources */,
 				D84DB8A623E0F1B7007F6349 /* SendingHintsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

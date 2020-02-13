@@ -55,8 +55,12 @@ class ViewController: UIViewController {
     let marker26 = GMSMarker()
     let marker27 = GMSMarker()
     
-    
-
+    struct Goal {
+        var location = CLLocationCoordinate2D(latitude: 40.009789, longitude: -105.272754)
+        var title = "Macky Auditorium Concert Hall"
+        var snippet = "Iconic Gothic-style auditorium hosting jazz & classical concerts, opera singers & guest speakers."
+    }
+    var teammateGoal = Goal()
     
     
     override func viewDidLoad() {
@@ -94,12 +98,195 @@ class ViewController: UIViewController {
         currentLocation = locationManager.location
 
         self.showMarker(position: myMapView.camera.target)
+        randomTeammateGoal()
         
     
         // Do any additional setup after loading the view.
     }
 
     @IBAction func unwindSegue(_ segue:UIStoryboardSegue){
+        
+    }
+    
+    func randomTeammateGoal(){
+        let i = Int.random(in: 0 ..< 25)
+//        var tempMarkerName = ""
+//        if(i == 0){
+//            tempMarkerName = "marker"
+//        }
+//        else{
+//            tempMarkerName = "marker" + String(i)
+//        }
+        
+      switch i {
+        case 0:
+            teammateGoal.location = marker.position
+            teammateGoal.title = marker.title!
+            teammateGoal.snippet = marker.snippet!
+            marker.icon = partnerPoint
+            break
+        case 1:
+            teammateGoal.location = marker2.position
+            teammateGoal.title = marker2.title!
+            teammateGoal.snippet = marker2.snippet!
+            marker2.icon = partnerPoint
+            break
+        case 2:
+            teammateGoal.location = marker3.position
+            teammateGoal.title = marker3.title!
+            teammateGoal.snippet = marker3.snippet!
+            marker3.icon = partnerPoint
+            break
+        case 3:
+            teammateGoal.location = marker4.position
+            teammateGoal.title = marker4.title!
+            teammateGoal.snippet = marker4.snippet!
+            marker4.icon = partnerPoint
+            break
+        case 4:
+            teammateGoal.location = marker5.position
+            teammateGoal.title = marker5.title!
+            teammateGoal.snippet = marker5.snippet!
+            marker5.icon = partnerPoint
+            break
+        case 5:
+            teammateGoal.location = marker6.position
+            teammateGoal.title = marker6.title!
+            teammateGoal.snippet = marker6.snippet!
+            marker6.icon = partnerPoint
+            break
+        case 6:
+            teammateGoal.location = marker7.position
+            teammateGoal.title = marker7.title!
+            teammateGoal.snippet = marker7.snippet!
+            marker7.icon = partnerPoint
+            break
+        case 7:
+            teammateGoal.location = marker8.position
+            teammateGoal.title = marker8.title!
+            teammateGoal.snippet = marker8.snippet!
+            marker8.icon = partnerPoint
+            break
+        case 8:
+            teammateGoal.location = marker9.position
+            teammateGoal.title = marker9.title!
+            teammateGoal.snippet = marker9.snippet!
+            marker9.icon = partnerPoint
+            break
+        case 9:
+            teammateGoal.location = marker10.position
+            teammateGoal.title = marker10.title!
+            teammateGoal.snippet = marker10.snippet!
+            marker10.icon = partnerPoint
+            break
+        case 10:
+            teammateGoal.location = marker11.position
+            teammateGoal.title = marker11.title!
+            teammateGoal.snippet = marker11.snippet!
+            marker11.icon = partnerPoint
+            break
+        case 11:
+            teammateGoal.location = marker12.position
+            teammateGoal.title = marker12.title!
+            teammateGoal.snippet = marker12.snippet!
+            marker12.icon = partnerPoint
+            break
+        case 12:
+            teammateGoal.location = marker13.position
+            teammateGoal.title = marker13.title!
+            teammateGoal.snippet = marker13.snippet!
+            marker13.icon = partnerPoint
+            break
+        case 13:
+            teammateGoal.location = marker14.position
+            teammateGoal.title = marker14.title!
+            teammateGoal.snippet = marker14.snippet!
+            marker14.icon = partnerPoint
+            break
+        case 14:
+            teammateGoal.location = marker15.position
+            teammateGoal.title = marker15.title!
+            teammateGoal.snippet = marker15.snippet!
+            marker15.icon = partnerPoint
+            break
+        case 15:
+            teammateGoal.location = marker16.position
+            teammateGoal.title = marker16.title!
+            teammateGoal.snippet = marker16.snippet!
+            marker16.icon = partnerPoint
+            break
+        case 16:
+            teammateGoal.location = marker17.position
+            teammateGoal.title = marker17.title!
+            teammateGoal.snippet = marker17.snippet!
+            marker17.icon = partnerPoint
+            break
+        case 17:
+            teammateGoal.location = marker18.position
+            teammateGoal.title = marker18.title!
+            teammateGoal.snippet = marker18.snippet!
+            marker18.icon = partnerPoint
+            break
+        case 18:
+            teammateGoal.location = marker19.position
+            teammateGoal.title = marker19.title!
+            teammateGoal.snippet = marker19.snippet!
+            marker19.icon = partnerPoint
+            break
+        case 19:
+            teammateGoal.location = marker20.position
+            teammateGoal.title = marker20.title!
+            teammateGoal.snippet = marker20.snippet!
+            marker20.icon = partnerPoint
+            break
+        case 20:
+            teammateGoal.location = marker21.position
+            teammateGoal.title = marker21.title!
+            teammateGoal.snippet = marker21.snippet!
+            marker21.icon = partnerPoint
+            break
+        case 21:
+            teammateGoal.location = marker22.position
+            teammateGoal.title = marker22.title!
+            teammateGoal.snippet = marker22.snippet!
+            marker22.icon = partnerPoint
+            break
+        case 22:
+            teammateGoal.location = marker23.position
+            teammateGoal.title = marker23.title!
+            teammateGoal.snippet = marker23.snippet!
+            marker23.icon = partnerPoint
+            break
+        case 23:
+            teammateGoal.location = marker24.position
+            teammateGoal.title = marker24.title!
+            teammateGoal.snippet = marker24.snippet!
+            marker24.icon = partnerPoint
+            break
+        case 24:
+            teammateGoal.location = marker25.position
+            teammateGoal.title = marker25.title!
+            teammateGoal.snippet = marker25.snippet!
+            marker25.icon = partnerPoint
+            break
+//        case 25:
+//            teammateGoal.location = marker26.position
+//            teammateGoal.title = marker26.title!
+//            teammateGoal.snippet = marker26.snippet!
+//            marker26.icon = partnerPoint
+//            break
+//        case 26:
+//            teammateGoal.location = marker27.position
+//            teammateGoal.title = marker27.title!
+//            teammateGoal.snippet = marker27.snippet!
+//            marker27.icon = partnerPoint
+//            break
+        default:
+            teammateGoal.location = marker.position
+            teammateGoal.title = marker.title!
+            teammateGoal.snippet = marker.snippet!
+            marker.icon = partnerPoint
+        }
         
     }
     
@@ -144,7 +331,7 @@ class ViewController: UIViewController {
         marker6.position = CLLocationCoordinate2D(latitude: 40.009789, longitude: -105.272754)
         marker6.title = "Macky Auditorium Concert Hall"
         marker6.snippet = "Iconic Gothic-style auditorium hosting jazz & classical concerts, opera singers & guest speakers."
-        marker6.icon = partnerPoint
+        marker6.icon = potentialPlaces
         marker6.map = myMapView
         
 //        let marker7 = GMSMarker()
@@ -277,11 +464,11 @@ class ViewController: UIViewController {
         marker24.icon = potentialPlaces
         marker24.map = myMapView
         
-        marker24.position = CLLocationCoordinate2D(latitude: 40.005197, longitude: -105.263468)
-        marker24.title = "Koelbel Building"
-        marker24.snippet = "Home of the LEEDS School of Business."
-        marker24.icon = potentialPlaces
-        marker24.map = myMapView
+        marker25.position = CLLocationCoordinate2D(latitude: 40.005197, longitude: -105.263468)
+        marker25.title = "Koelbel Building"
+        marker25.snippet = "Home of the LEEDS School of Business."
+        marker25.icon = potentialPlaces
+        marker25.map = myMapView
 //        let currentLocMarker = GMSMarker()
 //            currentLocMarker.position = currentLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 40.008, longitude: -105.27)
 //        let Thisposition = CLLoca
@@ -338,6 +525,17 @@ class ViewController: UIViewController {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sendHints" {
+            let destVC : SendingHintsViewController = segue.destination as! SendingHintsViewController
+            destVC.roomNumber = self.roomNumber
+            destVC.teammateGoalName = teammateGoal.title
+            destVC.teammateGoalSnippet = teammateGoal.snippet
+        }
+    }
+    
+
 
 }
 extension ViewController: GMSMapViewDelegate{
@@ -349,6 +547,7 @@ extension ViewController: GMSMapViewDelegate{
     }
 }
 extension ViewController: CLLocationManagerDelegate{
+    
 }
 
 
