@@ -40,7 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
         db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player2In": false
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player1In": false
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
@@ -70,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Document successfully updated")
             }
         }
+        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").delete()
+        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").delete()
     }
 
 

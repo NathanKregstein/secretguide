@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import FirebaseCore
+import FirebaseFirestore
 //import FirebaseCore
 //import FirebaseFirestore
 //import FirebaseFirestoreSwift
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
 //    var partnerPoint = UIImage(named: "ExOutline")
     var partnerPoint = UIImage(named: "exNewC4")
 
+    @IBOutlet weak var mostRecentHintLabel: UIButton!
     @IBOutlet weak var hintToolbar: UIToolbar!
     let myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
     
@@ -61,6 +64,9 @@ class ViewController: UIViewController {
         var snippet = "Iconic Gothic-style auditorium hosting jazz & classical concerts, opera singers & guest speakers."
     }
     var teammateGoal = Goal()
+    var currentHint = ""
+    var db: Firestore!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
     override func viewDidLoad() {
@@ -88,6 +94,7 @@ class ViewController: UIViewController {
 //        google_map = GMSMapView.map(withFrame: CGRect.zero, camera: myCamera)
 //        google_map.camera = myCamera
 //        myMapView.mapType =
+        db = Firestore.firestore()
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
@@ -98,10 +105,40 @@ class ViewController: UIViewController {
         currentLocation = locationManager.location
 
         self.showMarker(position: myMapView.camera.target)
+        roomNumber = appDelegate.roomNumber
         randomTeammateGoal()
         
     
         // Do any additional setup after loading the view.
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("this is current hint in view" + currentHint)
+        if(appDelegate.player1 == true){
+            db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                    self.currentHint = document.data()!["hint0"] as? String ?? ""
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
+        else{
+                db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                        print("Document data: \(dataDescription)")
+                        self.currentHint = document.data()!["hint0"] as? String ?? ""
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+        }
+
+        mostRecentHintLabel.setTitle("Current hint for you:" + currentHint, for: .normal)
     }
 
     @IBAction func unwindSegue(_ segue:UIStoryboardSegue){
@@ -287,7 +324,53 @@ class ViewController: UIViewController {
             teammateGoal.snippet = marker.snippet!
             marker.icon = partnerPoint
         }
-        
+        if(appDelegate.player1 == true){
+            db.collection("rooms").document("room" + String(roomNumber)).updateData(["player2GoalPositionLatitude": self.teammateGoal.location.latitude]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            db.collection("rooms").document("room" + String(roomNumber)).updateData(["player2GoalPositionLongitude": self.teammateGoal.location.longitude]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            db.collection("rooms").document("room" + String(roomNumber)).updateData(["player2GoalName": self.teammateGoal.title]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        }
+        else{
+            db.collection("rooms").document("room" + String(roomNumber)).updateData(["player1GoalPositionLatitude": self.teammateGoal.location.latitude]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            db.collection("rooms").document("room" + String(roomNumber)).updateData(["player1GoalPositionLongitude": self.teammateGoal.location.longitude]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            db.collection("rooms").document("room" + String(roomNumber)).updateData(["player1GoalName": self.teammateGoal.title]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        }
+
     }
     
         // Creates a marker in the center of the map.

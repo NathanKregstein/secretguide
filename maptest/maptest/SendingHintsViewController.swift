@@ -52,25 +52,29 @@ class SendingHintsViewController: UIViewController {
                 if(hintCounter == 0){
                     db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").setData([ "hint" + String(hintCounter): hintToSend])
                     print("case1")
+                    hintCounter = hintCounter + 1
                 }
                 else{
                     db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").updateData([ "hint" + String(hintCounter): hintToSend])
                     print("case2")
+                    hintCounter = hintCounter + 1
                 }
             }
             else{
                 if(hintCounter == 0){
                     db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").setData([ "hint" + String(hintCounter): hintToSend])
                     print("case3")
+                    hintCounter = hintCounter + 1
                 }
                 else{
                     db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").updateData([ "hint" + String(hintCounter): hintToSend])
                     print("case4")
+                    hintCounter = hintCounter + 1
                 }
             }
             sentHintsText.text = "You: "  +  hintToSend
             print( "this is the sent hint: " + hintToSend)
-            hintCounter += 1
+//            hintCounter = hintCounter + 1
             
         }
         
@@ -93,6 +97,11 @@ class SendingHintsViewController: UIViewController {
 //        teammatesGoalLabel.sizeToFit()
         teammatesGoalLabel.text = "Teammate Goal: " +  teammateGoalName + "\n" + teammateGoalSnippet
         teammatesGoalLabel.sizeToFit()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("this is hint to send" + hintToSend)
+        sentHintsText.text = "You: "  +  hintToSend
     }
     
     @objc func dismissKeyboard() {

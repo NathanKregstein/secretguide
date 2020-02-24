@@ -6,13 +6,13 @@
 //  Copyright © 2020 Nathan Kregstein. All rights reserved.
 //
 
-//import UIKit
+import UIKit
 ////class EmojiKeyboard: UIButton, UIKeyInput {
-//class EmojiKeyboard: UITextField {
-//    
+class EmojiKeyboard: UITextField {
+//
 ////    var hasText: Bool = true
-////    override var textInputContextIdentifier: String? { return "" }
-//    
+    override var textInputContextIdentifier: String? { return "" }
+//
 ////    override func insertText(_ text: String) { print("\(text)") }
 ////    
 //////    func deleteBackward() {}
@@ -25,12 +25,12 @@
 ////    var returnKeyType: UIReturnKeyType = UIReturnKeyType(rawValue: 7)!
 //    
 //    
-//    override var textInputMode: UITextInputMode? {
-//        for mode in UITextInputMode.activeInputModes {
-//            if mode.primaryLanguage == "emoji" {
-//                return mode
-//            }
-//        }
-//        return nil
-//    }
-//}
+    override var textInputMode: UITextInputMode? {
+        for mode in UITextInputMode.activeInputModes {
+            if mode.primaryLanguage == "emoji" {
+                return mode
+            }
+        }
+        return nil
+    }
+}

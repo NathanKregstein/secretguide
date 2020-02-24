@@ -206,6 +206,7 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(self.roomNumber)
         if(created){
+            self.appDelegate.roomNumber = Int(roomNumber)
             let destVC : LoadingViewController = segue.destination as! LoadingViewController
             destVC.roomNumber = self.roomNumber
         }
