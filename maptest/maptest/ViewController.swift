@@ -24,7 +24,9 @@ class ViewController: UIViewController {
     var potentialPlaces = UIImage(named: "quNewC5")
 //    var partnerPoint = UIImage(named: "ExOutline")
     var partnerPoint = UIImage(named: "exNewC4")
-
+    var recievedHintCounter = 0
+    @IBOutlet weak var HintRecievedLabel: UILabel!
+    
     @IBOutlet weak var mostRecentHintLabel: UIButton!
     @IBOutlet weak var hintToolbar: UIToolbar!
     let myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
@@ -64,6 +66,7 @@ class ViewController: UIViewController {
         var snippet = "Iconic Gothic-style auditorium hosting jazz & classical concerts, opera singers & guest speakers."
     }
     var teammateGoal = Goal()
+    var myGoal = Goal()
     var currentHint = ""
     var db: Firestore!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -107,38 +110,60 @@ class ViewController: UIViewController {
         self.showMarker(position: myMapView.camera.target)
         roomNumber = appDelegate.roomNumber
         randomTeammateGoal()
-        
-    
+//        HintRecievedLabel.layer.borderColor = UIColor.darkGray.cgColor
+//        HintRecievedLabel.layer.borderWidth = 3.0
+//        HintRecievedLabel.textContainerInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+//
         // Do any additional setup after loading the view.
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         print("this is current hint in view" + currentHint)
-        if(appDelegate.player1 == true){
-            db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").getDocument { (document, error) in
-                if let document = document, document.exists {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("Document data: \(dataDescription)")
-                    self.currentHint = document.data()!["hint0"] as? String ?? ""
-                } else {
-                    print("Document does not exist")
-                }
-            }
-        }
-        else{
-                db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").getDocument { (document, error) in
-                    if let document = document, document.exists {
-                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                        print("Document data: \(dataDescription)")
-                        self.currentHint = document.data()!["hint0"] as? String ?? ""
-                    } else {
-                        print("Document does not exist")
-                    }
-                }
-        }
-
-        mostRecentHintLabel.setTitle("Current hint for you:" + currentHint, for: .normal)
+//        if(appDelegate.player1 == true){
+//            db.collection("rooms").document("room" + String(roomNumber)).getDocument { (document, error) in
+//                if let document = document, document.exists {
+//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                    print("Document data: \(dataDescription)")
+//                    self.appDelegate.player2HintCounter = document.data()!["player2HintCounter"] as? Int ?? 0
+//                } else {
+//                    print("Document does not exist")
+//                }
+//            }
+//            db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").getDocument { (document, error) in
+//                if let document = document, document.exists {
+//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                    print("Document data: \(dataDescription)")
+//                    self.currentHint = document.data()!["hint" + String(self.appDelegate.player2HintCounter)] as? String ?? ""
+//                } else {
+//                    print("Document does not exist")
+//                }
+//                self.mostRecentHintLabel.setTitle("Current hint for you:" + self.currentHint, for: .normal)
+//            }
+//        }
+//        else{
+//            db.collection("rooms").document("room" + String(roomNumber)).getDocument { (document, error) in
+//                if let document = document, document.exists {
+//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                    print("Document data: \(dataDescription)")
+//                    self.appDelegate.player1HintCounter = document.data()!["player1HintCounter"] as? Int ?? 0
+//                } else {
+//                    print("Document does not exist")
+//                }
+//            }
+//                db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").getDocument { (document, error) in
+//                    if let document = document, document.exists {
+//                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                        print("Document data: \(dataDescription)")
+//                        self.currentHint = document.data()!["hint"+String(self.appDelegate.player1HintCounter)] as? String ?? ""
+//                    } else {
+//                        print("Document does not exist")
+//                    }
+//                    self.mostRecentHintLabel.setTitle("Current hint for you:" + self.currentHint, for: .normal)
+//                }
+//        }
+        listenDocument()
+        
     }
 
     @IBAction func unwindSegue(_ segue:UIStoryboardSegue){
@@ -576,12 +601,25 @@ class ViewController: UIViewController {
 //            mapView.camera = camera
 //        } else {
 //            myMapView.animate(to: camera)
-      
+//        let goalLocation: CLLocation
+//        goalLocation.setValue(myGoal.location, forKey: "location")
+        let goalLocation = CLLocation(latitude: myGoal.location.latitude, longitude: myGoal.location.longitude)
         currentLocMarker.position = location.coordinate
-    
+        print("current location:" , currentLocation)
+        print("goal location:" , goalLocation)
         currentLocMarker.icon = UIImage(named: "Player")
         currentLocMarker.map = myMapView
         print(currentLocMarker.position)
+        var distance =  location.distance(from: goalLocation)
+//            location.distance(from: myGoal.location)
+        print("distance:")
+        print(distance)
+        if(distance <= 35){
+            print("within distance")
+            let alert = UIAlertController(title: "You Made It!", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yay", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
         
 //        }
         
@@ -607,6 +645,70 @@ class ViewController: UIViewController {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
+    }
+    
+    private func listenDocument(){
+        print(roomNumber)
+        if(appDelegate.player1 == true){
+            //want to read in hints player2sent
+            db.collection("rooms").document("room" + String(roomNumber)).addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                print("Current data: \(data)")
+                self.recievedHintCounter = (data["player2HintCounter"]) as? Int ?? 0
+                self.myGoal.location.latitude = (data["player1GoalPositionLatitude"]) as? Double ?? 0
+                self.myGoal.location.longitude = (data["player1GoalPositionLongitude"]) as? Double ?? 0
+            }
+            db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                print("Current data: \(data)")
+                self.HintRecievedLabel.text = "Most Recent Hint:" + (data["hint" + String(self.recievedHintCounter)] as? String ?? "")
+            }
+            
+        }
+        else{
+            //want to read in hints player1sent
+            db.collection("rooms").document("room" + String(roomNumber)).addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                print("Current data: \(data)")
+                self.recievedHintCounter = (data["player1HintCounter"]) as? Int ?? 0
+                self.myGoal.location.latitude = (data["player2GoalPositionLatitude"]) as? Double ?? 0
+                self.myGoal.location.longitude = (data["player2GoalPositionLongitude"]) as? Double ?? 0
+            }
+            
+            db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                print("Current data: \(data)")
+                self.HintRecievedLabel.text = "Most Recent Hint: " + (data["hint" + String(self.recievedHintCounter)] as? String ?? "")
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

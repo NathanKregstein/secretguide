@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var db: Firestore!
     var roomNumber = 0
     var player1 = true
+    var player1HintCounter = 0
+    var player2HintCounter = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -41,24 +43,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player2In": false
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
-        db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player1In": false
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
-        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").delete()
-        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").delete()
+//        db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player2In": false
+//        ]) { err in
+//            if let err = err {
+//                print("Error updating document: \(err)")
+//            } else {
+//                print("Document successfully updated")
+//            }
+//        }
+//        db.collection("rooms").document("room" + String(roomNumber) ).updateData( ["player1In": false
+//        ]) { err in
+//            if let err = err {
+//                print("Error updating document: \(err)")
+//            } else {
+//                print("Document successfully updated")
+//            }
+//        }
+//        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").delete()
+//        db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").delete()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

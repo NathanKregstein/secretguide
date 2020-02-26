@@ -49,6 +49,13 @@ class SendingHintsViewController: UIViewController {
         }
         else{
             if(appDelegate.player1 == false){
+                db.collection("rooms").document("room" + String(roomNumber)).updateData(["player2HintCounter": appDelegate.player2HintCounter]){ err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
                 if(hintCounter == 0){
                     db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").setData([ "hint" + String(hintCounter): hintToSend])
                     print("case1")
@@ -59,8 +66,16 @@ class SendingHintsViewController: UIViewController {
                     print("case2")
                     hintCounter = hintCounter + 1
                 }
+                appDelegate.player2HintCounter = hintCounter
             }
             else{
+                db.collection("rooms").document("room" + String(roomNumber)).updateData(["player1HintCounter": appDelegate.player1HintCounter]){ err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
                 if(hintCounter == 0){
                     db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").setData([ "hint" + String(hintCounter): hintToSend])
                     print("case3")
@@ -71,8 +86,9 @@ class SendingHintsViewController: UIViewController {
                     print("case4")
                     hintCounter = hintCounter + 1
                 }
+                appDelegate.player1HintCounter = hintCounter
             }
-            sentHintsText.text = "You: "  +  hintToSend
+            sentHintsText.text = sentHintsText.text ?? "You: " +  hintToSend + "\n"
             print( "this is the sent hint: " + hintToSend)
 //            hintCounter = hintCounter + 1
             
@@ -102,6 +118,13 @@ class SendingHintsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("this is hint to send" + hintToSend)
         sentHintsText.text = "You: "  +  hintToSend
+        if (appDelegate.player1){
+            hintCounter = appDelegate.player1HintCounter
+        }
+        else{
+            hintCounter = appDelegate.player2HintCounter
+        }
+        
     }
     
     @objc func dismissKeyboard() {

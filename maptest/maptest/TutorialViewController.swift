@@ -30,7 +30,7 @@ class TutorialViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(self.restorationIdentifier ==  "lastPageTutorial"){
             let destVC : ViewController = segue.destination as! ViewController
-            destVC.roomNumber = self.roomNumber
+//            destVC.roomNumber = self.roomNumber
         }
     }
 
