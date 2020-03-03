@@ -180,6 +180,33 @@ class ViewController: UIViewController {
 //            tempMarkerName = "marker" + String(i)
 //        }
         
+        
+        marker.icon = potentialPlaces
+        marker2.icon = potentialPlaces
+        marker3.icon = potentialPlaces
+        marker4.icon = potentialPlaces
+        marker5.icon = potentialPlaces
+        marker6.icon = potentialPlaces
+        marker7.icon = potentialPlaces
+        marker8.icon = potentialPlaces
+        marker9.icon = potentialPlaces
+        marker10.icon = potentialPlaces
+        marker11.icon = potentialPlaces
+        marker12.icon = potentialPlaces
+        marker13.icon = potentialPlaces
+        marker14.icon = potentialPlaces
+        marker15.icon = potentialPlaces
+        marker16.icon = potentialPlaces
+        marker17.icon = potentialPlaces
+        marker18.icon = potentialPlaces
+        marker19.icon = potentialPlaces
+        marker20.icon = potentialPlaces
+        marker21.icon = potentialPlaces
+        marker22.icon = potentialPlaces
+        marker23.icon = potentialPlaces
+        marker24.icon = potentialPlaces
+        marker25.icon = potentialPlaces
+        
       switch i {
         case 0:
             teammateGoal.location = marker.position
@@ -350,6 +377,19 @@ class ViewController: UIViewController {
             marker.icon = partnerPoint
         }
         if(appDelegate.player1 == true){
+//            db.collection("rooms").document("room" + String(roomNumber)).getDocument { (document, error) in
+//                if let document = document, document.exists {
+//                    let data = document.data()
+//                    if((data!["player2GoalReached"] as? Bool ?? false) == true){
+//                        let alert = UIAlertController(title: "You Successfully guided your Teammate!", message: nil, preferredStyle: .alert)
+//                        alert.addAction(UIAlertAction(title: "YAY, start next goal!", style: .default, handler: { action in self.randomTeammateGoal()}))
+//                        self.present(alert, animated: true)
+//                    }
+//                } else {
+//                    print("Document does not exist")
+//                }
+//            }
+
             db.collection("rooms").document("room" + String(roomNumber)).updateData(["player2GoalPositionLatitude": self.teammateGoal.location.latitude]){ err in
                 if let err = err {
                     print("Error updating document: \(err)")
@@ -365,6 +405,13 @@ class ViewController: UIViewController {
                 }
             }
             db.collection("rooms").document("room" + String(roomNumber)).updateData(["player2GoalName": self.teammateGoal.title]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            db.collection("rooms").document("room" + String(self.roomNumber)).updateData(["player1GoalReached": false]){ err in
                 if let err = err {
                     print("Error updating document: \(err)")
                 } else {
@@ -388,6 +435,13 @@ class ViewController: UIViewController {
                 }
             }
             db.collection("rooms").document("room" + String(roomNumber)).updateData(["player1GoalName": self.teammateGoal.title]){ err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+            db.collection("rooms").document("room" + String(self.roomNumber)).updateData(["player2GoalReached": false]){ err in
                 if let err = err {
                     print("Error updating document: \(err)")
                 } else {
@@ -619,6 +673,24 @@ class ViewController: UIViewController {
             let alert = UIAlertController(title: "You Made It!", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yay", style: .cancel, handler: nil))
             self.present(alert, animated: true)
+            if(self.appDelegate.player1 == true){
+                db.collection("rooms").document("room" + String(roomNumber)).updateData(["player1GoalReached": true]){ err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
+            }
+            else{
+                db.collection("rooms").document("room" + String(roomNumber)).updateData(["player2GoalReached": true]){ err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+            }
         }
         
 //        }
@@ -664,6 +736,12 @@ class ViewController: UIViewController {
                 self.recievedHintCounter = (data["player2HintCounter"]) as? Int ?? 0
                 self.myGoal.location.latitude = (data["player1GoalPositionLatitude"]) as? Double ?? 0
                 self.myGoal.location.longitude = (data["player1GoalPositionLongitude"]) as? Double ?? 0
+                if((data["player2GoalReached"] as? Bool ?? false) == true){
+                    self.db.collection("rooms").document("room" + String(self.roomNumber)).updateData(["player2GoalReached": false])
+                    let alert = UIAlertController(title: "You Successfully guided your Teammate!", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "YAY, start next goal!", style: .default, handler: { action in self.randomTeammateGoal()}))
+                    self.present(alert, animated: true)
+                }
             }
             db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
@@ -675,7 +753,7 @@ class ViewController: UIViewController {
                     return
                 }
                 print("Current data: \(data)")
-                self.HintRecievedLabel.text = "Most Recent Hint:" + (data["hint" + String(self.recievedHintCounter)] as? String ?? "")
+                self.HintRecievedLabel.text = (data["hint" + String(self.recievedHintCounter)] as? String ?? "")
             }
             
         }
@@ -694,6 +772,12 @@ class ViewController: UIViewController {
                 self.recievedHintCounter = (data["player1HintCounter"]) as? Int ?? 0
                 self.myGoal.location.latitude = (data["player2GoalPositionLatitude"]) as? Double ?? 0
                 self.myGoal.location.longitude = (data["player2GoalPositionLongitude"]) as? Double ?? 0
+                if((data["player1GoalReached"] as? Bool ?? false) == true){
+                    self.db.collection("rooms").document("room" + String(self.roomNumber)).updateData(["player1GoalReached": false])
+                    let alert = UIAlertController(title: "You Successfully guided your Teammate!", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "YAY, start next goal!", style: .default, handler: { action in self.randomTeammateGoal()}))
+                    self.present(alert, animated: true)
+                }
             }
             
             db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").addSnapshotListener { documentSnapshot, error in
@@ -706,7 +790,7 @@ class ViewController: UIViewController {
                     return
                 }
                 print("Current data: \(data)")
-                self.HintRecievedLabel.text = "Most Recent Hint: " + (data["hint" + String(self.recievedHintCounter)] as? String ?? "")
+                self.HintRecievedLabel.text = (data["hint" + String(self.recievedHintCounter)] as? String ?? "")
             }
         }
     }

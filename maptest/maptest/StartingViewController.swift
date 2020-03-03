@@ -172,9 +172,28 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
                         self.present(alert, animated: true)
                     }
                     else if(player1 && !player2){
+                        currentRoom.collection("hints").document("player1Hints").delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
+                        currentRoom.collection("hints").document("player2Hints").delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Document successfully removed!")
+                            }
+                        }
                         //join room
                         self.appDelegate.player1 = false
-                        currentRoom.updateData( ["player2In": true
+                        currentRoom.setData( [
+                            "player1In": true,
+                            "player2In": true,
+                            "room": self.roomNumber,
+                            "player1GoalReached": false,
+                            "player2GoalReached": false
                         ]) { err in
                             if let err = err {
                                 print("Error updating document: \(err)")

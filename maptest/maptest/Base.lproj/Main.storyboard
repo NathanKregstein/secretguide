@@ -221,32 +221,9 @@
                                     <constraint firstAttribute="height" constant="55" id="CvP-67-mwU"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" id="Dwk-J1-2TH">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="F0q-QT-OEu">
-                                            <rect key="frame" x="16" y="2.5" width="230" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" title="Most recent hint for you: ">
-                                                <color key="titleColor" red="0.0" green="0.50588235294117645" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="a7N-2p-RCH" kind="presentation" modalTransitionStyle="crossDissolve" id="D5T-bx-Qax"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="2wX-yH-aA9">
-                                        <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Oex-gj-Q1H">
-                                            <rect key="frame" x="246" y="0.0" width="30" height="55"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                            <state key="normal" title="|">
-                                                <color key="titleColor" red="0.76233354659999997" green="0.76233354659999997" blue="0.76233354659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                        </button>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" id="xM3-X8-7Pr">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" id="Gua-wV-TuR">
-                                            <rect key="frame" x="276" y="2.5" width="83" height="50"/>
+                                            <rect key="frame" x="16" y="2.5" width="343" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="Send hint to teammate">
@@ -258,25 +235,32 @@
                                         </button>
                                         <color key="tintColor" red="1" green="0.66665592340000002" blue="0.0" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     </barButtonItem>
-                                    <barButtonItem width="45" style="plain" systemItem="fixedSpace" id="ciK-ni-Cgo"/>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Recent Hint: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kt7-eC-1Kp">
-                                <rect key="frame" x="107.5" y="40" width="160.5" height="24"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌷" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kt7-eC-1Kp">
+                                <rect key="frame" x="160.5" y="71" width="54" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="2" height="-1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Recent Hint:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VZ-ZT-dj5">
+                                <rect key="frame" x="119" y="45" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kt7-eC-1Kp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="InU-aL-fo1"/>
+                            <constraint firstItem="kt7-eC-1Kp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AED-gd-WPY"/>
                             <constraint firstItem="mDO-og-bkF" firstAttribute="leading" secondItem="qff-ub-Kba" secondAttribute="leading" id="PdY-b2-ctW"/>
                             <constraint firstItem="qff-ub-Kba" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="REz-UB-AVk"/>
                             <constraint firstItem="mDO-og-bkF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Rbn-zy-RDM"/>
                             <constraint firstItem="qff-ub-Kba" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RhF-lE-4wg"/>
-                            <constraint firstItem="kt7-eC-1Kp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="VHT-yE-tSV"/>
+                            <constraint firstItem="kt7-eC-1Kp" firstAttribute="top" secondItem="7VZ-ZT-dj5" secondAttribute="bottom" constant="5" id="Scg-83-tZt"/>
+                            <constraint firstItem="7VZ-ZT-dj5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T8q-ze-bzg"/>
+                            <constraint firstItem="7VZ-ZT-dj5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="eLP-tq-oOQ"/>
                             <constraint firstItem="qff-ub-Kba" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hMz-dE-xFo"/>
                             <constraint firstItem="mDO-og-bkF" firstAttribute="trailing" secondItem="qff-ub-Kba" secondAttribute="trailing" id="hrX-mu-hAs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qff-ub-Kba" secondAttribute="bottom" constant="57" id="qyu-Pj-hsX"/>
@@ -286,7 +270,6 @@
                     <connections>
                         <outlet property="HintRecievedLabel" destination="kt7-eC-1Kp" id="CZ2-jW-Fcf"/>
                         <outlet property="hintToolbar" destination="mDO-og-bkF" id="Fwz-1i-SeJ"/>
-                        <outlet property="mostRecentHintLabel" destination="F0q-QT-OEu" id="rLy-OL-ejF"/>
                         <outlet property="myMapView" destination="qff-ub-Kba" id="wlg-j4-xJ6"/>
                     </connections>
                 </viewController>
