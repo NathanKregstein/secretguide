@@ -19,16 +19,16 @@ class SendingHintsViewController: UIViewController {
     var hintCounter = 0
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    let emojiRanges = [
-        0x1F601...0x1F64F,
-        0x2702...0x27B0,
-        0x1F680...0x1F6C0,
-        0x1F170...0x1F251
-    ]
+//    let emojiRanges = [
+//        0x1F601...0x1F64F,
+//        0x2702...0x27B0,
+//        0x1F680...0x1F6C0,
+//        0x1F170...0x1F251
+//    ]
 
     let letters = NSCharacterSet.letters
     
-    @IBOutlet weak var sentHintsText: UILabel!
+//    @IBOutlet weak var sentHintsText: UILabel!
     
     @IBOutlet weak var sentHintTextField: UITextField!
     
@@ -43,10 +43,23 @@ class SendingHintsViewController: UIViewController {
     func sendingHint(){
 //        dismissKeyboard()
         hintToSend = sentHintTextField.text ?? ""
-        if(hintToSend.rangeOfCharacter(from: letters) != nil){
+//        if(hintToSend.rangeOfCharacter(from: letters) != nil){
+//        for scalar in hintToSend.unicodeScalars {
+//            let isEmoji = scalar.properties.isEmoji
+//            print((scalar.description))
+//            print(isEmoji)
+//            if(isEmoji == false && scalar.description != ""){
+//                let alert = UIAlertController(title: "Send Only Emoji's", message: nil, preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                self.present(alert, animated: true)
+//                sentHintTextField.text = nil
+//                return;
+//            }
+//        }
+        if(hintToSend.containsOnlyEmojis() == false){
             //alert hint needs to be emoji
             print("hint contains a letter")
-            let alert = UIAlertController(title: "Send Only Emoji's", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Send Only Emoji's (Max 2)", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         }
@@ -94,7 +107,7 @@ class SendingHintsViewController: UIViewController {
                 }
                 appDelegate.player1HintCounter = hintCounter
             }
-            sentHintsText.text = sentHintsText.text ?? "You: " +  hintToSend + "\n"
+//            sentHintsText.text = sentHintsText.text ?? "You: " +  hintToSend + "\n"
             print( "this is the sent hint: " + hintToSend)
 //            hintCounter = hintCounter + 1
             
@@ -123,7 +136,7 @@ class SendingHintsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print("this is hint to send" + hintToSend)
-        sentHintsText.text = "You: "  +  hintToSend
+//        sentHintsText.text = "You: "  +  hintToSend
         if (appDelegate.player1){
             hintCounter = appDelegate.player1HintCounter
         }
@@ -169,6 +182,43 @@ class SendingHintsViewController: UIViewController {
 
 }
 
+//from stack overflow  user Miniroo
+extension String {
+    func containsOnlyEmojis() -> Bool {
+        if (count == 0){
+            return false
+        }
+        for character in self {
+            if !character.isEmoji {
+                return false
+            }
+        }
+        if (count > 2){
+            return false
+        }
+        return true
+    }
+    
+    func containsEmoji() -> Bool {
+        for character in self {
+            if character.isEmoji {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+extension Character {
+    // An emoji can either be a 2 byte unicode character or a normal UTF8 character with an emoji modifier
+    // appended as is the case with 3️⃣. 0x238C is the first instance of UTF16 emoji that requires no modifier.
+    // `isEmoji` will evaluate to true for any character that can be turned into an emoji by adding a modifier
+    // such as the digit "3". To avoid this we confirm that any character below 0x238C has an emoji modifier attached
+    var isEmoji: Bool {
+        guard let scalar = unicodeScalars.first else { return false }
+        return scalar.properties.isEmoji && (scalar.value > 0x238C || unicodeScalars.count > 1)
+    }
+}
 //class EmojiTextField: UITextField {
 //
 //    // required for iOS 13

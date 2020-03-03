@@ -180,7 +180,7 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="BeginGame" modalTransitionStyle="crossDissolve" id="nRN-Qs-jbU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use given hint to figure out which location to go to. Possible locations marked by :" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fh-bZ-AbK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use given hint to figure out which location to go to. Possible locations for you to go to marked by :" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fh-bZ-AbK">
                                 <rect key="frame" x="16" y="147" width="343" height="121"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
@@ -250,6 +250,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f9-cb-5Lt">
+                                <rect key="frame" x="16" y="30" width="64" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -260,10 +266,12 @@
                             <constraint firstItem="qff-ub-Kba" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RhF-lE-4wg"/>
                             <constraint firstItem="kt7-eC-1Kp" firstAttribute="top" secondItem="7VZ-ZT-dj5" secondAttribute="bottom" constant="5" id="Scg-83-tZt"/>
                             <constraint firstItem="7VZ-ZT-dj5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T8q-ze-bzg"/>
+                            <constraint firstItem="7f9-cb-5Lt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZWa-nS-bt8"/>
                             <constraint firstItem="7VZ-ZT-dj5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="eLP-tq-oOQ"/>
                             <constraint firstItem="qff-ub-Kba" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hMz-dE-xFo"/>
                             <constraint firstItem="mDO-og-bkF" firstAttribute="trailing" secondItem="qff-ub-Kba" secondAttribute="trailing" id="hrX-mu-hAs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qff-ub-Kba" secondAttribute="bottom" constant="57" id="qyu-Pj-hsX"/>
+                            <constraint firstItem="7f9-cb-5Lt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="zLS-IA-xCZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -271,6 +279,7 @@
                         <outlet property="HintRecievedLabel" destination="kt7-eC-1Kp" id="CZ2-jW-Fcf"/>
                         <outlet property="hintToolbar" destination="mDO-og-bkF" id="Fwz-1i-SeJ"/>
                         <outlet property="myMapView" destination="qff-ub-Kba" id="wlg-j4-xJ6"/>
+                        <outlet property="scoreLabel" destination="7f9-cb-5Lt" id="NiF-tE-T0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -293,18 +302,11 @@
                                     <segue destination="Vfy-7E-ujw" kind="unwind" identifier="doneSentHint" unwindAction="unwindSegue:" id="jia-zZ-zDu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hints Sent to Teammate" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KI9-6k-Zfu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Send Hint to Teammate" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KI9-6k-Zfu">
                                 <rect key="frame" x="54" y="33" width="305" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Hint:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIV-ec-f7w">
-                                <rect key="frame" x="62" y="196" width="269" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.95686274510000002" green="0.59607843140000005" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XR0-RZ-23J">
@@ -322,7 +324,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teammates Goal: " lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsC-1T-h9p">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teammates Goal: " lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsC-1T-h9p">
                                 <rect key="frame" x="54" y="96" width="305" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -335,7 +337,6 @@
                     </view>
                     <connections>
                         <outlet property="sentHintTextField" destination="zqc-vV-EVu" id="Afu-P3-c8h"/>
-                        <outlet property="sentHintsText" destination="QIV-ec-f7w" id="7Vx-cj-jIb"/>
                         <outlet property="teammatesGoalLabel" destination="gsC-1T-h9p" id="l1v-wj-Z1w"/>
                     </connections>
                 </viewController>

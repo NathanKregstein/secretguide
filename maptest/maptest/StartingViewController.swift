@@ -193,7 +193,8 @@ class StartingViewController: UIViewController, UITextFieldDelegate {
                             "player2In": true,
                             "room": self.roomNumber,
                             "player1GoalReached": false,
-                            "player2GoalReached": false
+                            "player2GoalReached": false,
+                            "gameScore": 0
                         ]) { err in
                             if let err = err {
                                 print("Error updating document: \(err)")

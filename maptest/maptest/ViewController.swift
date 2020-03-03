@@ -25,9 +25,12 @@ class ViewController: UIViewController {
 //    var partnerPoint = UIImage(named: "ExOutline")
     var partnerPoint = UIImage(named: "exNewC4")
     var recievedHintCounter = 0
+    var score = 0
     @IBOutlet weak var HintRecievedLabel: UILabel!
     
-    @IBOutlet weak var mostRecentHintLabel: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+//    @IBOutlet weak var mostRecentHintLabel: UIButton!
     @IBOutlet weak var hintToolbar: UIToolbar!
     let myCamera = GMSCameraPosition.camera(withLatitude: 40.007592, longitude: -105.268423, zoom: 15.0)
     
@@ -110,6 +113,7 @@ class ViewController: UIViewController {
         self.showMarker(position: myMapView.camera.target)
         roomNumber = appDelegate.roomNumber
         randomTeammateGoal()
+        scoreLabel.text = "Score: \n 0"
 //        HintRecievedLabel.layer.borderColor = UIColor.darkGray.cgColor
 //        HintRecievedLabel.layer.borderWidth = 3.0
 //        HintRecievedLabel.textContainerInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
@@ -120,48 +124,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print("this is current hint in view" + currentHint)
-//        if(appDelegate.player1 == true){
-//            db.collection("rooms").document("room" + String(roomNumber)).getDocument { (document, error) in
-//                if let document = document, document.exists {
-//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                    print("Document data: \(dataDescription)")
-//                    self.appDelegate.player2HintCounter = document.data()!["player2HintCounter"] as? Int ?? 0
-//                } else {
-//                    print("Document does not exist")
-//                }
-//            }
-//            db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").getDocument { (document, error) in
-//                if let document = document, document.exists {
-//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                    print("Document data: \(dataDescription)")
-//                    self.currentHint = document.data()!["hint" + String(self.appDelegate.player2HintCounter)] as? String ?? ""
-//                } else {
-//                    print("Document does not exist")
-//                }
-//                self.mostRecentHintLabel.setTitle("Current hint for you:" + self.currentHint, for: .normal)
-//            }
-//        }
-//        else{
-//            db.collection("rooms").document("room" + String(roomNumber)).getDocument { (document, error) in
-//                if let document = document, document.exists {
-//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                    print("Document data: \(dataDescription)")
-//                    self.appDelegate.player1HintCounter = document.data()!["player1HintCounter"] as? Int ?? 0
-//                } else {
-//                    print("Document does not exist")
-//                }
-//            }
-//                db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player1Hints").getDocument { (document, error) in
-//                    if let document = document, document.exists {
-//                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                        print("Document data: \(dataDescription)")
-//                        self.currentHint = document.data()!["hint"+String(self.appDelegate.player1HintCounter)] as? String ?? ""
-//                    } else {
-//                        print("Document does not exist")
-//                    }
-//                    self.mostRecentHintLabel.setTitle("Current hint for you:" + self.currentHint, for: .normal)
-//                }
-//        }
         listenDocument()
         
     }
@@ -452,6 +414,50 @@ class ViewController: UIViewController {
 
     }
     
+    func updateScore(){
+        print("updatingScore")
+        var tempScore = 0
+        db.collection("rooms").document("room" + String(self.roomNumber)).getDocument { (document, error) in
+            if let document = document, document.exists {
+                let myData = document.data()
+                tempScore = myData!["gameScore"] as? Int ?? 0
+                if(self.appDelegate.player1 == true){
+                    print(self.appDelegate.player1HintCounter)
+                    self.score = tempScore + (1000 / self.appDelegate.player1HintCounter)
+                    self.db.collection("rooms").document("room" + String(self.roomNumber)).updateData(["gameScore": self.score]){ err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                        self.scoreLabel.text = "Score: \n " + String(self.score)
+                        self.appDelegate.player1HintCounter = 0
+                    }
+                    
+                }
+                else{
+                    print(self.appDelegate.player2HintCounter)
+                    self.score = tempScore + (1000 / self.appDelegate.player2HintCounter)
+                    self.db.collection("rooms").document("room" + String(self.roomNumber)).updateData(["gameScore": self.score]){ err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                        self.scoreLabel.text = "Score: \n " + String(self.score)
+                        self.appDelegate.player2HintCounter = 0
+                        print(self.score)
+                    }
+                    
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+
+        
+    }
+    
         // Creates a marker in the center of the map.
     func showMarker(position: CLLocationCoordinate2D){
 //            let marker = GMSMarker()
@@ -642,6 +648,7 @@ class ViewController: UIViewController {
 //
         }
     
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         print("Location: \(location)")
@@ -741,6 +748,10 @@ class ViewController: UIViewController {
                     let alert = UIAlertController(title: "You Successfully guided your Teammate!", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "YAY, start next goal!", style: .default, handler: { action in self.randomTeammateGoal()}))
                     self.present(alert, animated: true)
+                    self.updateScore()
+                }
+                if(((data["gameScore"]) as? Int ?? 0) > self.score){
+                    self.scoreLabel.text = "Score: \n " + String(((data["gameScore"]) as? Int ?? 0))
                 }
             }
             db.collection("rooms").document("room" + String(roomNumber)).collection("hints").document("player2Hints").addSnapshotListener { documentSnapshot, error in
@@ -777,6 +788,10 @@ class ViewController: UIViewController {
                     let alert = UIAlertController(title: "You Successfully guided your Teammate!", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "YAY, start next goal!", style: .default, handler: { action in self.randomTeammateGoal()}))
                     self.present(alert, animated: true)
+                    self.updateScore()
+                }
+                if(((data["gameScore"]) as? Int ?? 0) > self.score){
+                    self.scoreLabel.text = "Score: \n " + String(((data["gameScore"]) as? Int ?? 0))
                 }
             }
             
