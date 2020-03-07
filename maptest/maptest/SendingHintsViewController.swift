@@ -32,6 +32,7 @@ class SendingHintsViewController: UIViewController {
     
     @IBOutlet weak var sentHintTextField: UITextField!
     
+    @IBOutlet weak var teammateGoalDescription: UILabel!
     @IBOutlet weak var teammatesGoalLabel: UILabel!
     @IBAction func sendHintAction(_ sender: Any) {
         
@@ -109,6 +110,10 @@ class SendingHintsViewController: UIViewController {
             }
 //            sentHintsText.text = sentHintsText.text ?? "You: " +  hintToSend + "\n"
             print( "this is the sent hint: " + hintToSend)
+            let alert = UIAlertController(title: "Hint sent: " + hintToSend, message: "Get more points the less hints it takes to guide your teammate to their goal", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:"👍" , style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+            
 //            hintCounter = hintCounter + 1
             
         }
@@ -130,8 +135,10 @@ class SendingHintsViewController: UIViewController {
         view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
 //        teammatesGoalLabel.sizeToFit()
-        teammatesGoalLabel.text = "Teammate Goal: " +  teammateGoalName + "\n" + teammateGoalSnippet
-        teammatesGoalLabel.sizeToFit()
+        teammatesGoalLabel.text = "Teammate's Goal" + "\n" +  teammateGoalName
+//        teammatesGoalLabel.sizeToFit()
+        teammateGoalDescription.text = teammateGoalSnippet
+        teammateGoalDescription.sizeToFit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
