@@ -135,9 +135,9 @@ class SendingHintsViewController: UIViewController {
         view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
 //        teammatesGoalLabel.sizeToFit()
-        teammatesGoalLabel.text = "Teammate's Goal" + "\n" +  teammateGoalName
+        teammatesGoalLabel.text = "Teammate's Goal:" + "\n" +  teammateGoalName
 //        teammatesGoalLabel.sizeToFit()
-        teammateGoalDescription.text = teammateGoalSnippet
+        teammateGoalDescription.text = "Description:" + "\n" + teammateGoalSnippet
         teammateGoalDescription.sizeToFit()
     }
     
