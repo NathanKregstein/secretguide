@@ -17,6 +17,7 @@ import FirebaseFirestore
 
 class ViewController: UIViewController {
     var roomNumber = 0
+    var rounds = 0
     @IBOutlet weak var myMapView: GMSMapView!
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
     var partnerPoint = UIImage(named: "exNewC4")
     var recievedHintCounter = 0
     var score = 0
+    var maxrounds = 3
     @IBOutlet weak var HintRecievedLabel: UILabel!
     
     @IBOutlet weak var scoreLabel: UILabel!
@@ -415,6 +417,7 @@ class ViewController: UIViewController {
     }
     
     func updateScore(){
+        rounds = rounds + 1
         print("updatingScore")
         var tempScore = 0
         db.collection("rooms").document("room" + String(self.roomNumber)).getDocument { (document, error) in
@@ -453,6 +456,18 @@ class ViewController: UIViewController {
             } else {
                 print("Document does not exist")
             }
+        }
+//        db.collection("rooms").document("room" + String(self.roomNumber)).updateData(["rounds": self.rounds]){ err in
+//            if let err = err {
+//                print("Error updating document: \(err)")
+//            } else {
+//                print("Document successfully updated")
+//            }
+//        }
+        if (rounds == maxrounds){
+            let alert = UIAlertController(title: "You Win your total score is: " + String(score), message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yay", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
         }
 
         

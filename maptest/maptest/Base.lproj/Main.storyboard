@@ -55,15 +55,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secret Guide" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-wc-Gcn">
-                                <rect key="frame" x="16" y="32.5" width="343" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECRET GUIDE" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-wc-Gcn">
+                                <rect key="frame" x="21" y="33" width="333" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QaD-wc-Gcn" secondAttribute="height" multiplier="343:36" id="TG8-fn-fd5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBn-Ci-fjP">
+                                <rect key="frame" x="21" y="32.5" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="4ZJ-GC-sZf"/>
+                                    <constraint firstAttribute="width" constant="36" id="5wA-L5-InE"/>
+                                </constraints>
+                                <state key="normal" image="Back">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6bB-xP-Z4b" kind="unwind" unwindAction="unwindSegue:" id="Elb-eG-cxE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -72,6 +85,8 @@
                             <constraint firstItem="WkS-GG-68N" firstAttribute="centerX" secondItem="Nj8-PQ-EvT" secondAttribute="centerX" id="Rjt-Si-ulH"/>
                             <constraint firstItem="H6h-pW-TK3" firstAttribute="centerX" secondItem="Nj8-PQ-EvT" secondAttribute="centerX" id="Sum-fM-vaI"/>
                             <constraint firstItem="4BH-8q-4v1" firstAttribute="top" secondItem="Nj8-PQ-EvT" secondAttribute="top" id="WMq-gK-sbZ"/>
+                            <constraint firstItem="QaD-wc-Gcn" firstAttribute="leading" secondItem="wBn-Ci-fjP" secondAttribute="trailing" constant="-36" id="Wok-wh-cBK"/>
+                            <constraint firstItem="wBn-Ci-fjP" firstAttribute="centerY" secondItem="QaD-wc-Gcn" secondAttribute="centerY" id="bTz-RF-KR1"/>
                             <constraint firstItem="4BH-8q-4v1" firstAttribute="centerX" secondItem="Nj8-PQ-EvT" secondAttribute="centerX" id="ffU-Ug-te3"/>
                             <constraint firstItem="QaD-wc-Gcn" firstAttribute="centerY" secondItem="4BH-8q-4v1" secondAttribute="centerY" id="l2I-lF-7kI"/>
                             <constraint firstItem="GKY-Ok-52j" firstAttribute="bottom" secondItem="WkS-GG-68N" secondAttribute="bottom" constant="44" id="mNP-wN-xfd"/>
@@ -87,6 +102,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p12-6B-mT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6bB-xP-Z4b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-3004" y="706.59670164917543"/>
         </scene>
@@ -98,52 +114,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bb-Vz-pIB">
-                                <rect key="frame" x="16" y="432" width="343" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="b3m-DD-Exy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <state key="normal" title="Create a Room"/>
-                                <connections>
-                                    <action selector="CreateRoomButtonAction:" destination="Mqj-vw-Zk0" eventType="touchUpInside" id="MAQ-vY-RsC"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Join Room (Enter Room #)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-Ye-efH">
-                                <rect key="frame" x="16" y="209" width="343" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="8rq-nb-nsn"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="continue"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-cX-0fq">
-                                <rect key="frame" x="173.5" y="359" width="28" height="24"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secret Guide  🗺🏫🤔" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1Y-4B-7OW">
-                                <rect key="frame" x="16" y="98" width="343" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECRET GUIDE" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1Y-4B-7OW">
+                                <rect key="frame" x="45.5" y="273.5" width="284.5" height="45.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="38"/>
                                 <color key="textColor" red="0.95654159784317017" green="0.59469622373580933" blue="0.10738842934370041" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🗺🏫🤔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAN-52-Rc1">
+                                <rect key="frame" x="61.5" y="180" width="252" height="93.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="78"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="H04-wr-XGA">
+                                <rect key="frame" x="63.5" y="327" width="248.5" height="106.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Join Room (Enter Room #)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-Ye-efH">
+                                        <rect key="frame" x="0.0" y="0.0" width="248.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="continue"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-cX-0fq">
+                                        <rect key="frame" x="112.5" y="40" width="23.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bb-Vz-pIB">
+                                        <rect key="frame" x="60" y="70.5" width="128" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <state key="normal" title="Create a Room"/>
+                                        <connections>
+                                            <action selector="CreateRoomButtonAction:" destination="Mqj-vw-Zk0" eventType="touchUpInside" id="MAQ-vY-RsC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="i1Y-4B-7OW" firstAttribute="leading" secondItem="FWq-Ye-efH" secondAttribute="leading" id="0kF-x6-CEN"/>
-                            <constraint firstItem="FWq-Ye-efH" firstAttribute="trailing" secondItem="3Bb-Vz-pIB" secondAttribute="trailing" id="3Y4-p7-ZCe"/>
-                            <constraint firstItem="FWq-Ye-efH" firstAttribute="leading" secondItem="3Bb-Vz-pIB" secondAttribute="leading" id="A82-zA-Sf6"/>
-                            <constraint firstItem="i1Y-4B-7OW" firstAttribute="leading" secondItem="j7Y-Hz-u3b" secondAttribute="leadingMargin" id="BUk-NX-5od"/>
-                            <constraint firstItem="i1Y-4B-7OW" firstAttribute="top" secondItem="rNO-Uk-2kn" secondAttribute="top" constant="78" id="FiJ-P9-0Ev"/>
-                            <constraint firstItem="FWq-Ye-efH" firstAttribute="top" secondItem="i1Y-4B-7OW" secondAttribute="bottom" constant="69" id="Io0-H7-ljf"/>
-                            <constraint firstItem="rNO-Uk-2kn" firstAttribute="bottom" secondItem="3Bb-Vz-pIB" secondAttribute="bottom" constant="184" id="LRU-6u-abP"/>
-                            <constraint firstItem="i1Y-4B-7OW" firstAttribute="trailing" secondItem="FWq-Ye-efH" secondAttribute="trailing" id="MEN-cH-Ovb"/>
-                            <constraint firstItem="7YP-cX-0fq" firstAttribute="centerX" secondItem="j7Y-Hz-u3b" secondAttribute="centerX" id="nAt-Ux-NS3"/>
-                            <constraint firstItem="i1Y-4B-7OW" firstAttribute="trailing" secondItem="j7Y-Hz-u3b" secondAttribute="trailingMargin" id="stV-QW-dKY"/>
-                            <constraint firstItem="7YP-cX-0fq" firstAttribute="top" secondItem="FWq-Ye-efH" secondAttribute="bottom" constant="119" id="tfW-AB-Luz"/>
+                            <constraint firstItem="i1Y-4B-7OW" firstAttribute="top" secondItem="RAN-52-Rc1" secondAttribute="bottom" id="6ZK-5o-NGt"/>
+                            <constraint firstItem="H04-wr-XGA" firstAttribute="centerX" secondItem="j7Y-Hz-u3b" secondAttribute="centerX" id="Anr-0m-a44"/>
+                            <constraint firstItem="RAN-52-Rc1" firstAttribute="centerX" secondItem="j7Y-Hz-u3b" secondAttribute="centerX" id="EVN-xj-tX0"/>
+                            <constraint firstItem="H04-wr-XGA" firstAttribute="top" secondItem="i1Y-4B-7OW" secondAttribute="bottom" constant="8" id="Is9-Ud-CXz"/>
+                            <constraint firstItem="RAN-52-Rc1" firstAttribute="top" secondItem="rNO-Uk-2kn" secondAttribute="top" constant="160" id="jOt-qr-ck0"/>
+                            <constraint firstItem="i1Y-4B-7OW" firstAttribute="centerX" secondItem="j7Y-Hz-u3b" secondAttribute="centerX" id="zVu-Ho-mTu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rNO-Uk-2kn"/>
                     </view>
@@ -204,13 +220,13 @@
                                     <segue destination="f2S-VM-bTA" kind="presentation" identifier="ToNextTutorial" modalTransitionStyle="crossDissolve" id="lTh-dL-uwW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secret Guide" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88h-hI-9J6">
-                                <rect key="frame" x="67.5" y="36" width="240" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECRET GUIDE" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88h-hI-9J6">
+                                <rect key="frame" x="72.5" y="36" width="230" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="88h-hI-9J6" secondAttribute="height" multiplier="20:3" id="ZPr-LA-uz6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -285,13 +301,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secret Guide" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFR-Xi-y2B">
-                                <rect key="frame" x="67.5" y="36" width="240" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECRET GUIDE" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFR-Xi-y2B">
+                                <rect key="frame" x="71" y="36" width="233" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LFR-Xi-y2B" secondAttribute="height" multiplier="20:3" id="LeY-q4-BNe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="textColor" red="0.14899864792823792" green="0.14903163909912109" blue="0.14899659156799316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -418,23 +434,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdM-uo-8U2">
-                                <rect key="frame" x="16" y="39" width="30" height="30"/>
+                                <rect key="frame" x="16" y="39.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kdM-uo-8U2" secondAttribute="height" multiplier="1:1" id="cMi-S2-hEO"/>
                                     <constraint firstAttribute="height" constant="30" id="nNt-49-rjP"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Back"/>
+                                <state key="normal" image="Back" backgroundImage="Back"/>
                                 <connections>
                                     <segue destination="Vfy-7E-ujw" kind="unwind" identifier="doneSentHint" unwindAction="unwindSegue:" id="jia-zZ-zDu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Hint to Teammate" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KI9-6k-Zfu">
-                                <rect key="frame" x="56" y="38" width="305" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEND HINT TO TEAMMATE" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KI9-6k-Zfu">
+                                <rect key="frame" x="56" y="39" width="297" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KI9-6k-Zfu" secondAttribute="height" multiplier="305:32" id="Kr5-15-B0M"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XR0-RZ-23J">
